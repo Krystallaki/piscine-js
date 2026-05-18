@@ -1,5 +1,5 @@
 const isValid = (date) => {
-  if (date === null) return false
+  if (date === null || date === undefined || typeof date === 'string') return false
   const d = date instanceof Date ? date : new Date(date)
   return !isNaN(d.getTime())
 }
