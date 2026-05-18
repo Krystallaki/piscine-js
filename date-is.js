@@ -1,0 +1,5 @@
+const isValid = (date) => !isNaN(date.getTime())
+const isAfter = (a, b) => a.getTime() > b.getTime()
+const isBefore = (a, b) => a.getTime() < b.getTime()
+const isFuture = (date) => isValid(date) && isAfter(date, new Date())
+const isPast = (date) => isValid(date) && isBefore(date, new Date())
