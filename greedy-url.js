@@ -1,4 +1,7 @@
-const getURL = (str) => str.match(/(?<!\w)https?:\/\/\S+/g) || []
+const getURL = (str) => {
+  const matches = str.match(/(?<!\w)(?<!=["'])https?:\/\/\S+/g) || []
+  return matches.map(url => url.replace(/["']+$/, ''))
+}
 
 const countParams = (url) => {
   const q = url.indexOf('?')
