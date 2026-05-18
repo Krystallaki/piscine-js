@@ -1,4 +1,8 @@
-const isValid = (date) => date instanceof Date && !isNaN(date.getTime())
+const isValid = (date) => {
+  if (date === null) return false
+  const d = date instanceof Date ? date : new Date(date)
+  return !isNaN(d.getTime())
+}
 const isAfter = (a, b) => a.getTime() > b.getTime()
 const isBefore = (a, b) => a.getTime() < b.getTime()
 const isFuture = (date) => isValid(date) && isAfter(date, new Date())
