@@ -3,7 +3,8 @@ const isValid = (date) => {
   const d = date instanceof Date ? date : new Date(date)
   return !isNaN(d.getTime())
 }
-const isAfter = (a, b) => a.getTime() > b.getTime()
-const isBefore = (a, b) => a.getTime() < b.getTime()
+const toTime = (d) => d instanceof Date ? d.getTime() : typeof d === 'number' ? d : NaN
+const isAfter = (a, b) => toTime(a) > toTime(b)
+const isBefore = (a, b) => toTime(a) < toTime(b)
 const isFuture = (date) => isValid(date) && isAfter(date, new Date())
 const isPast = (date) => isValid(date) && isBefore(date, new Date())
