@@ -17,7 +17,7 @@ const format = (date, str) => {
     GGGG: y > 0 ? 'Anno Domini' : 'Before Christ',
     MMMM: months[mo],
     EEEE: weekdays[wd],
-    yyyy: String(y).padStart(4, '0'),
+    yyyy: String(Math.abs(y)).padStart(4, '0'),
     MMM: months[mo].slice(0, 3),
     MM: pad(mo + 1),
     dd: pad(d),
@@ -33,7 +33,7 @@ const format = (date, str) => {
     h: h,
     m: m,
     s: s,
-    y: y,
+    y: Math.abs(y),
     a: H < 12 ? 'AM' : 'PM',
   }
 
