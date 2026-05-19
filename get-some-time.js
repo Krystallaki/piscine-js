@@ -1,7 +1,9 @@
 const firstDayWeek = (weekNum, yearStr) => {
   const year = Number(yearStr)
 
-  const jan1 = new Date(year, 0, 1)
+  const jan1 = new Date(0)
+  jan1.setFullYear(year, 0, 1)
+  jan1.setHours(0, 0, 0, 0)
 
   const dayOfWeek = jan1.getDay()
   const daysBack = (dayOfWeek + 6) % 7
