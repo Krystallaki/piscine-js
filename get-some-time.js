@@ -9,14 +9,13 @@ const firstDayWeek = (weekNum, yearStr) => {
   const week1Monday = new Date(jan1)
   week1Monday.setDate(jan1.getDate() - daysBack)
 
-  const weekStart = week1Monday.getFullYear() < year ? jan1 : week1Monday
+  const target = new Date(week1Monday)
+  target.setDate(week1Monday.getDate() + (weekNum - 1) * 7)
 
-  const target = new Date(weekStart)
-  target.setDate(weekStart.getDate() + (weekNum - 1) * 7)
+  const effectiveTarget = target < jan1 ? jan1 : target
+  const dd = String(effectiveTarget.getDate()).padStart(2, '0')
+  const mm = String(effectiveTarget.getMonth() + 1).padStart(2, '0')
+  const yyyy = effectiveTarget.getFullYear()
 
-  const dd = String(target.getDate()).padStart(2, '0')
-  const mm = String(target.getMonth() + 1).padStart(2, '0')
-  const yyyy = target.getFullYear()
-
-  return `${dd}-${mm}-${yyyy}`
+  return `${dd}-${mm}-${String(yyyy).padStart(4, '0')}`
 }
