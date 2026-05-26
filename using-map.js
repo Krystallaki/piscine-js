@@ -7,7 +7,7 @@ const fahrenheitToCelsius = (arr) =>
   arr.map(s => `${Math.floor((parseFloat(s) - 32) * 5 / 9)}°C`)
 
 const trimTemp = (arr) =>
-  arr.map(({ city, temperature }) => ({ city, temperature: temperature.replace(/\s/g, '') }))
+  arr.map(obj => ({ ...obj, temperature: obj.temperature.replace(/\s/g, '') }))
 
 const tempForecasts = (arr) =>
   arr.map(({ city, temperature, state }) => {
